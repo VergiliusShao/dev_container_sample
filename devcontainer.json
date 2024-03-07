@@ -1,0 +1,26 @@
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
+			"installCudnn": true,
+			"installCudnnDev": true,
+			"installNvtx": true,
+			"installToolkit": true,
+			"cudaVersion": "12.2",
+			"cudnnVersion": "8.9.5.29"
+		}
+	},
+	"runArgs": [
+		"--gpus",
+		"all"
+	],
+ 
+  // change to your dataset folder
+	"mounts": [
+		"source=${localEnv:HOME}/datasets,target=/home/vscode/datasets,type=bind,consistency=cached"
+	],
+
+  
+	"postCreateCommand": "pip3 install --user -r requirements.txt"
+}
